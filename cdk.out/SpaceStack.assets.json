@@ -1,0 +1,20 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "8d80a835f2193e1df6f82b8381d5216dc9cdc1c9a8fca58563c9f5625c4d815d": {
+      "source": {
+        "path": "SpaceStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-eu-central-1": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-central-1",
+          "objectKey": "8d80a835f2193e1df6f82b8381d5216dc9cdc1c9a8fca58563c9f5625c4d815d.json",
+          "region": "eu-central-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-eu-central-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
