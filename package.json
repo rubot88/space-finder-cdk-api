@@ -1,27 +1,28 @@
 {
-  "name": "space-finder-cdk-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rubot88/space-finder-cdk-api.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rubot88/space-finder-cdk-api/issues"
-  },
-  "homepage": "https://github.com/rubot88/space-finder-cdk-api#readme",
-  "devDependencies": {
-    "aws-cdk": "^2.8.0",
-    "aws-cdk-lib": "^2.8.0",
-    "constructs": "^10.0.37",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
-  }
+    "name": "space-finder-cdk-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rubot88/space-finder-cdk-api.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/rubot88/space-finder-cdk-api/issues"
+    },
+    "homepage": "https://github.com/rubot88/space-finder-cdk-api#readme",
+    "devDependencies": {
+        "@types/node": "^17.0.9",
+        "aws-cdk": "^2.8.0",
+        "aws-cdk-lib": "^2.8.0",
+        "constructs": "^10.0.37",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.4"
+    }
 }
