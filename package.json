@@ -18,6 +18,7 @@
     },
     "homepage": "https://github.com/rubot88/space-finder-cdk-api#readme",
     "devDependencies": {
+        "@types/aws-lambda": "^8.10.89",
         "@types/node": "^17.0.9",
         "aws-cdk": "^2.8.0",
         "aws-cdk-lib": "^2.8.0",
