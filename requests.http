@@ -2,3 +2,15 @@
 
 GET {{baseURL}}/hello/
 ###
+
+POST {{baseURL}}/spaces/
+Content-Type: application/json
+
+{
+  "location": "Kyiv",
+  "name": "In Ukraine"
+}
+###
+
+GET  {{baseURL}}/spaces/
+###

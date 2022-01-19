@@ -8,7 +8,6 @@ const s3Client = new S3();
 export const main = async (
   event?: APIGatewayProxyEventV2
 ): Promise<APIGatewayProxyResultV2> => {
-  console.log("event", event);
   const buckets = await s3Client.listBuckets().promise();
   const responseBody = {
     message: "Hello from lambda!",
