@@ -4,7 +4,6 @@ import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
 import { join } from "path";
 import {
   Code,
-  Function as LambdaFunction,
   LayerVersion,
   Runtime,
 } from "aws-cdk-lib/aws-lambda";
