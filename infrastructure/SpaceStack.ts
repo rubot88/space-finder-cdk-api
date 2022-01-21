@@ -1,12 +1,8 @@
 import { Stack, StackProps, Resource } from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
+import { Cors, LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
 import { join } from "path";
-import {
-  Code,
-  LayerVersion,
-  Runtime,
-} from "aws-cdk-lib/aws-lambda";
+import { Code, LayerVersion, Runtime } from "aws-cdk-lib/aws-lambda";
 import { GenericTable } from "./GenericTable";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import { Policy, PolicyStatement } from "aws-cdk-lib/aws-iam";
@@ -14,7 +10,13 @@ import { Policy, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import * as packageJson from "../package.json";
 
 export class SpaceStack extends Stack {
-  private api = new RestApi(this, "SpaceApi");
+  private api = new RestApi(this, "SpaceApi", {
+    defaultCorsPreflightOptions: {
+      allowOrigins: Cors.ALL_ORIGINS,
+      allowMethods: Cors.ALL_METHODS,
+      allowHeaders: Cors.DEFAULT_HEADERS,
+    },
+  });
 
   private spacesTable = new GenericTable(this, {
     tableName: "SpacesTable",
@@ -76,6 +78,12 @@ export class SpaceStack extends Stack {
       this.spacesTable.lambdaIntegrations.createLambda
     );
     spaceResource.addMethod(
+      "GET",
+      this.spacesTable.lambdaIntegrations.readLambda
+    );
+
+    const singleSpace = spaceResource.addResource("{id}");
+    singleSpace.addMethod(
       "GET",
       this.spacesTable.lambdaIntegrations.readLambda
     );

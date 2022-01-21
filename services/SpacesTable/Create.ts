@@ -6,6 +6,9 @@ import {
 } from "aws-lambda";
 import { v4 } from "uuid";
 
+import { MissingError, validatorAsSpaceEntry } from "../Shared/InputValidator";
+import { getEventBody } from "../Shared/Utils";
+
 const TABLE_NAME = process.env.TABLE_NAME!;
 const dbClient = new DynamoDB.DocumentClient();
 
@@ -20,10 +23,10 @@ export const handler = async (
 
   const { body } = event;
 
-  const item = typeof body === "object" ? event.body : JSON.parse(body);
-  item.spaceId = v4();
-
   try {
+    const item = getEventBody(event);
+    item.spaceId = v4();
+    validatorAsSpaceEntry(item);
     await dbClient
       .put({
         TableName: TABLE_NAME,
@@ -32,9 +35,11 @@ export const handler = async (
       .promise();
     result.body = JSON.stringify(item);
   } catch (error: any) {
+    if (error instanceof MissingError) {
+      result.statusCode = 403;
+    }
     result.statusCode = 500;
     result.body = error.message;
   }
-
   return result;
 };
